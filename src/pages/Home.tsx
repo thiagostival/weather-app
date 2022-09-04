@@ -126,50 +126,47 @@ export function Home() {
       const { source: source3H, apiCall: apiCall3H } = getWeather3H();
       getWeatherSource.current = source3H;
 
-      axios
-        .all([apiCall(location), apiCall3H(location)])
-        .then((responses) => {
-          const [{ data: dataCurrent }, { data: data3H }] =
-            responses as unknown as [
-              AxiosResponse<IAPICurrentResponse>,
-              AxiosResponse<IAPI3HResponse>
-            ];
+      const responses = await axios.all([
+        apiCall(location),
+        apiCall3H(location),
+      ]);
 
-          const formattedObj: IStateData = {
-            cityName: dataCurrent?.name || '--',
+      const [{ data: dataCurrent }, { data: data3H }] =
+        responses as unknown as [
+          AxiosResponse<IAPICurrentResponse>,
+          AxiosResponse<IAPI3HResponse>
+        ];
 
-            main: dataCurrent?.weather?.[0]?.main || '--',
-            icon: dataCurrent?.weather?.[0]?.icon || '01d',
-            description: dataCurrent?.weather?.[0]?.description || '--',
-            clouds: dataCurrent?.clouds?.all ?? '--',
-            windSpeed: dataCurrent?.wind?.speed ?? '--',
-            temp: dataCurrent?.main?.temp?.toFixed?.(0) ?? '--',
-            visibility:
-              (dataCurrent?.visibility?.toFixed?.(0) || 0 / 1000) ?? '--',
-            humidity: dataCurrent?.main?.humidity?.toFixed?.(0) ?? '--',
-            pressure: dataCurrent?.main?.pressure?.toFixed?.(0) ?? '--',
-            temp_max: dataCurrent?.main?.temp_max?.toFixed?.(0) ?? '--',
-            temp_min: dataCurrent?.main?.temp_min?.toFixed?.(0) ?? '--',
-            feels_like: dataCurrent?.main?.feels_like.toFixed?.(0) ?? '--',
+      const formattedObj: IStateData = {
+        cityName: dataCurrent?.name || '--',
 
-            list: data3H?.list?.map((item) => ({
-              date: item?.dt_txt || '--',
-              icon: item?.weather?.[0]?.icon || '01d',
-              temp: item?.main?.temp?.toFixed?.(0) ?? '--',
-            })),
-          };
+        main: dataCurrent?.weather?.[0]?.main || '--',
+        icon: dataCurrent?.weather?.[0]?.icon || '01d',
+        description: dataCurrent?.weather?.[0]?.description || '--',
+        clouds: dataCurrent?.clouds?.all ?? '--',
+        windSpeed: dataCurrent?.wind?.speed ?? '--',
+        temp: dataCurrent?.main?.temp?.toFixed?.(0) ?? '--',
+        visibility: (dataCurrent?.visibility?.toFixed?.(0) || 0 / 1000) ?? '--',
+        humidity: dataCurrent?.main?.humidity?.toFixed?.(0) ?? '--',
+        pressure: dataCurrent?.main?.pressure?.toFixed?.(0) ?? '--',
+        temp_max: dataCurrent?.main?.temp_max?.toFixed?.(0) ?? '--',
+        temp_min: dataCurrent?.main?.temp_min?.toFixed?.(0) ?? '--',
+        feels_like: dataCurrent?.main?.feels_like.toFixed?.(0) ?? '--',
 
-          setData(formattedObj);
+        list: data3H?.list?.map((item) => ({
+          date: item?.dt_txt || '--',
+          icon: item?.weather?.[0]?.icon || '01d',
+          temp: item?.main?.temp?.toFixed?.(0) ?? '--',
+        })),
+      };
 
-          setDateRefresh(getFormattedDate());
+      setData(formattedObj);
 
-          setLoading(false);
-        })
-        .catch(() => {
-          setLoading(false);
-        });
+      setDateRefresh(getFormattedDate());
+
+      setLoading(false);
     } catch (err) {
-      //
+      setLoading(false);
     }
   }, [location]);
 
