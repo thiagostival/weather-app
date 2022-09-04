@@ -60,27 +60,33 @@ interface IAPICurrentResponse {
   }[];
 }
 
-interface IStateData {
+interface IWeatherData {
   cityName: string;
 
   main: string;
   icon: keyof IWeatherCodes;
   description: string;
-  clouds: number | string;
-  windSpeed: number | string;
   temp: number | string;
-  visibility: number | string;
-  humidity: number | string;
-  pressure: number | string;
   temp_max: number | string;
   temp_min: number | string;
   feels_like: number | string;
 
+  details: Array<{
+    title: string;
+    value: string | number;
+    unity?: string;
+  }>;
+
   list: Array<{
-    date: string;
+    hour: string;
     icon: keyof IWeatherCodes;
     temp: string | number;
   }>;
 }
 
-export type { IAPI3HResponse, IAPICurrentResponse, IWeatherCodes, IStateData };
+export type {
+  IAPI3HResponse,
+  IAPICurrentResponse,
+  IWeatherCodes,
+  IWeatherData,
+};

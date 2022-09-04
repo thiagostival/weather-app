@@ -1,5 +1,8 @@
 import { api, CancelToken } from './api';
 
+// UTILS
+import { getEnvs } from '../utils';
+
 interface IGetWeatherParams {
   latitude: number;
   longitude: number;
@@ -10,9 +13,9 @@ export function getCurrentWeather() {
 
   function apiCall({ latitude, longitude }: IGetWeatherParams) {
     return api.get(
-      `/data/2.5/weather/?lat=${latitude}&lon=${longitude}&units=metric&APPID=${
-        import.meta.env.VITE_API_KEY
-      }`,
+      `/data/2.5/weather/?lat=${latitude}&lon=${longitude}&units=metric&APPID=${getEnvs(
+        'VITE_API_KEY'
+      )}`,
       {
         cancelToken: source.token,
       }
@@ -27,9 +30,9 @@ export function getWeather3H() {
 
   function apiCall({ latitude, longitude }: IGetWeatherParams) {
     return api.get(
-      `/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&cnt=9&APPID=${
-        import.meta.env.VITE_API_KEY
-      }`,
+      `/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&cnt=9&APPID=${getEnvs(
+        'VITE_API_KEY'
+      )}`,
       {
         cancelToken: source.token,
       }
