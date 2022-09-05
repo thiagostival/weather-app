@@ -16,6 +16,10 @@ import {
 // TYPES
 import { IWeatherCodes } from '../../@types/types';
 interface IIconProps extends SVGProps<SVGSVGElement> {
+  /**
+   * @description
+   * - Code in the standard Weather API site, which tells you which icon best fits the current weather
+   */
   code?: keyof IWeatherCodes;
 }
 

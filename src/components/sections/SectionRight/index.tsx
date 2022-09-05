@@ -10,11 +10,33 @@ import {
 // TYPES
 import { IWeatherData } from '../../../@types/types';
 interface ISectionRightProps {
+  /**
+   * @description Variable responsible for telling if the user denied access to the location
+   * @example "User denied Geolocation"
+   */
   error?: string;
+
+  /**
+   * @description
+   * - Variable responsible for telling if an API call is currently in progress
+   */
   loading?: boolean;
+
+  /**
+   * @description Variable with the API data treated to component default
+   * @example [{ title: 'Weather', value: 'Cloudy' }, { title: 'Pressure', value: 10, unity: 'hPa' }]
+   */
   details?: IWeatherData['details'];
+
+  /**
+   * @description Responsible for telling whether the user is using the current location or not
+   */
   isCurrentLocation?: boolean;
+
+  /** @description Function executed by pressing the refresh button */
   handleRefresh?: () => void;
+
+  /** @description Function executed by pressing the current location button */
   handleGetCurrentLocation?: () => void;
 }
 

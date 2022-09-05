@@ -3,7 +3,10 @@ import { FiClock } from 'react-icons/fi';
 // TYPES
 import { IWeatherData } from '../../../@types/types';
 interface ISectionLeftProps {
+  /** @description Data returned from the API and processed */
   weatherData: IWeatherData;
+
+  /** @description Date of the last instant when the API call was executed */
   dateRefresh: string;
 }
 

@@ -19,7 +19,9 @@ The data is obtained through the [Weather API](https://openweathermap.org/api), 
 
 This project was developed with the following technologies:
 
-- [React](https://reactjs.org/)
+- [Node 16.17](https://nodejs.org/en/)
+- [React 18.2](https://reactjs.org/)
+- [TypeScript 4.6.4](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 - [Radix-UI](https://www.radix-ui.com/)
 - [React-Icons](https://react-icons.github.io/react-icons/)
@@ -33,6 +35,7 @@ This project was developed with the following technologies:
 To run the project:
 
 - First we have to:
+  - Clone the project by running this command in the terminal `git clone <repo_url>`;
   - Register at site [Weather API site](https://home.openweathermap.org/users/sign_up) to get the api key, as it is needed to get the climate data;
     - After registering, just go to [this address](https://home.openweathermap.org/api_keys) and copy the key already created by default;
   - Open the project folder and duplicate the .env.example file and rename the copy to .env;
