@@ -50,7 +50,7 @@ jest.mock('../utils', () => ({
   getEnvs: (key: string) => {
     switch (key) {
       case 'VITE_API_KEY':
-        return '72ce82bb863281ba414f17a0530a3224';
+        return '';
 
       case 'VITE_API_URL':
         return 'https://api.openweathermap.org';
