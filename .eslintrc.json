@@ -2,7 +2,8 @@
   "env": {
     "node": true,
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "globals": {
     "JSX": true
@@ -44,7 +45,18 @@
     "@typescript-eslint/no-unused-vars": "warn",
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "no-alert": "warn"
+    "no-alert": "warn",
+    "react/display-name": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.tsx",
+          "**/*.spec.tsx",
+          "**/setupTests.ts"
+        ]
+      }
+    ]
   },
   "settings": {
     "import/parsers": {

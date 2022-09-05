@@ -18,38 +18,52 @@ interface ITooltipProps {
   providerProps?: Omit<RadixTooltip.TooltipProviderProps, 'children'>;
 }
 
+interface IDefaultProps {
+  rootProps: ITooltipProps['rootProps'];
+  arrowProps: ITooltipProps['arrowProps'];
+  contentProps: ITooltipProps['contentProps'];
+}
+
 export const Tooltip = ({
   children,
   content,
   showArrow = true,
-  rootProps = {
-    delayDuration: 200,
-  },
-  arrowProps = {
-    width: 10,
-    height: 5,
-  },
+  rootProps = {},
+  arrowProps = {},
   portalProps = {},
-  contentProps = {
-    side: 'top',
-    sideOffset: 1,
-    align: 'center',
-  },
+  contentProps = {},
   triggerProps = {},
   providerProps = {},
 }: ITooltipProps) => {
+  const defaultProps: IDefaultProps = {
+    rootProps: {
+      delayDuration: 200,
+    },
+    arrowProps: {
+      width: 10,
+      height: 5,
+    },
+    contentProps: {
+      side: 'top',
+      sideOffset: 1,
+      align: 'center',
+    },
+  };
+
   return (
     <RadixTooltip.Provider {...providerProps}>
-      <RadixTooltip.Root {...rootProps}>
+      <RadixTooltip.Root {...defaultProps.rootProps} {...rootProps}>
         <RadixTooltip.Trigger asChild {...triggerProps}>
           {children}
         </RadixTooltip.Trigger>
 
         <RadixTooltip.Portal {...portalProps}>
-          <Content {...contentProps}>
+          <Content {...defaultProps.contentProps} {...contentProps}>
             {content}
 
-            {showArrow && <StyledArrow {...arrowProps} />}
+            {showArrow && (
+              <StyledArrow {...defaultProps.arrowProps} {...arrowProps} />
+            )}
           </Content>
         </RadixTooltip.Portal>
       </RadixTooltip.Root>
