@@ -2,13 +2,20 @@
 
 <img src="./imgs/banner.png" width="auto" />
 
-### :muscle: Project
+<div align="center">
+ <a href="#project">👉 Project</a>
+ <a href="#technologies">👉 Technologies</a>
+ <a href="#execution">👉 Execution</a>
+ <a href="#more">👉 More Images</a>
+</div>
+
+<h2 id="project">:muscle: Project</h2>
 
 This application gets the weather data from the user's location, if the user wants and agrees to share their location.
 
 The data is obtained through the [Weather API](https://openweathermap.org/api), where passing latitude and longitude gets current, future and historical data.
 
-### :rocket: Used Technologies
+<h2 id="technologies">:rocket: Used Technologies</h2>
 
 This project was developed with the following technologies:
 
@@ -21,7 +28,7 @@ This project was developed with the following technologies:
 - [Jest](https://jestjs.io/)
 - [ESLint](https://eslint.org/)
 
-### 👨🏻‍💻 Execution
+<h2 id="execution">👨🏻‍💻 Execution</h2>
 
 To run the project:
 
@@ -35,19 +42,25 @@ To run the project:
   - `yarn dev` or `npm run dev` -> To run the project;
 - To run the tests just run `yarn test` or `npm run test`.
 
-### 🌆 More Images
+<h2 id="more">🌆 More Images</h2>
 
-<figure style="width: 400px">
-  <img src="./imgs/default_location.png" alt="app with current location" width="400px">
-  <figcaption style="text-align: center">Default location, when the application is opened a default location already appears</figcaption>
-</figure>
+<div>
+  <img src="./imgs/default_location.png" alt="app with current location" width="auto">
+  <p align = "center">
+    Default location, when the application is opened a default location already appears
+ </p>
+</div>
 
-<figure style="width: 400px">
-  <img src="./imgs/current_location.png" alt="app with current location" width="400px">
-  <figcaption style="text-align: center">When the user allows access to the location</figcaption>
-</figure>
+<div>
+  <img src="./imgs/current_location.png" alt="app with current location" width="auto">
+  <p align = "center">
+    When the user allows access to the location
+  </p>
+</div>
 
-<figure style="width: 400px">
-  <img src="./imgs/without_location.png" alt="app with current location" width="400px">
-  <figcaption style="text-align: center">When the user does not allow access to the location</figcaption>
-</figure>
+<div>
+  <img src="./imgs/without_location.png" alt="app with current location" width="auto">
+  <p align = "center">
+    When the user does not allow access to the location
+  </p>
+</div>
