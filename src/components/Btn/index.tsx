@@ -4,6 +4,7 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { WrapperBtn } from './styles';
 
 interface IBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** @description Property that changes the button's style */
   isError?: boolean;
 }
 

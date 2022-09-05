@@ -2,6 +2,7 @@ import { IconBaseProps } from 'react-icons/lib';
 
 // TYPES
 interface ISpinnerProps extends IconBaseProps {
+  /** @description Responsible for animating the component */
   loading?: boolean;
 }
 

@@ -44,9 +44,19 @@ export function Home() {
   const [error, setError] = useState('');
   const [dateRefresh, setDateRefresh] = useState('');
 
+  /**
+   * @description
+   * Token of the current API call, with this reference it is possible to cancel the respective call that is occurring
+   */
   const getWeatherSource = useRef<CancelTokenSource>();
   const getCurrentWeatherSource = useRef<CancelTokenSource>();
 
+  /**
+   * @description
+   * - Responsible for getting access to the user's location, when it gets it
+   * saves the latitude and longitude data in the location state.
+   * - Otherwise, it adds in the error state the standard browser error message
+   */
   function handleGetCurrentLocation() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -64,6 +74,12 @@ export function Home() {
     );
   }
 
+  /**
+   * @description
+   * - Responsible for calling the APIs and getting the location data saved
+   * in the state and handling the returned data for the component pattern.
+   * And if there is an update in the location state the function is executed again
+   */
   const handleGetWeather = useCallback(async () => {
     try {
       setLoading(true);
